@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <title>Tips og hjælp - KSA Strikkeopskrifter og Shop</title>
+    <link rel="stylesheet" href="../style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <h1><a href="../index.html" id="logo"><span>KSA STRIKKE</span><br><span>DESIGN</span></a></h1>
+
+    <div id="wrapper">
+   
+        <header>
+            <nav>
+                <ul>
+                    <li><a href="garn-og-pinde.html">Garn og pinde</a></li>
+                    <li><a href="gratis-opskrifter.html">Gratis opskrifter</a></li>
+                    <li><a href="tips-og-hjaelp.html">Tips og hjælp</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                </ul>
+            </nav>
+        </header>
+    
+    <main>
+        <section>  
+           
+            <h2>Tips og hjælp</h2>
+            <p>Her kan du finde tips og hjælp samt vores brevkasse</p>
+           
+        </section>
+        <section id="p5-animation">
+            <h2>KSA Logo Animation</h2>
+            <p>Klik for at blande logoernes placeringer:</p>
+            <div id="animation-container"></div>
+          
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+            <script>
+               
+                let imgs = [];
+                let imgPositions = [];
+        
+                function preload() {
+                    for (let i = 0; i < 4; i++) {
+                        imgs[i] = loadImage('../KSA LOGO.svg');
+                    }
+                }
+        
+                function setup() {
+                    createCanvas(1200, 800).parent('animation-container'); 
+                    randomizePositions();
+                }
+        
+                function draw() {
+                    background(240);
+                    for (let i = 0; i < imgs.length; i++) {
+                        image(imgs[i], imgPositions[i].x, imgPositions[i].y, 150, 150);
+                    }
+                }
+        
+                function mousePressed() {
+                    randomizePositions();
+                }
+        
+                function randomizePositions() {
+                    imgPositions = [];
+                    for (let i = 0; i < imgs.length; i++) {
+                        imgPositions.push(createVector(random(width - 150), random(height - 150)));
+                    }
+                }
+            </script>
+        </section>
+        
+    </main>
+   
+        <footer>
+            <div class="column">
+                <h4>Sustainability</h4>
+                <p>
+                    In porttitor vel erat et condimentum. Etiam consequat ornare elit ac gravida.
+                </p>
+            </div>
+            
+            <div class="column">
+                <h4>Bliv KSA Forhandler</h4>
+                <p>
+                    Aliquam sit amet velit auctor, accumsan nisi a, consectetur felis.
+                </p>
+            </div>
+            
+            <div class="column">
+                <h4>Kontakt</h4>
+                <p>
+                    Sed a augue id massa bibendum bibendum.
+                </p>
+            </div>
+        </footer>
+   
+    </div>
+</body>
+</html>
