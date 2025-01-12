@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <title>Gratis Opskrifter - KSA Strikkeopskrifter og Shop</title>
+    <link rel="stylesheet" href="../style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <h1><a href="../index.html" id="logo"><span>KSA STRIKKE</span><br><span>DESIGN</span></a></h1>
+
+    <div id="wrapper">
+        <header>
+            <nav>
+                <ul>
+                    <li><a href="garn-og-pinde.html">Garn og pinde</a></li>
+                    <li><a href="gratis-opskrifter.html">Gratis opskrifter</a></li>
+                    <li><a href="tips-og-hjaelp.html">Tips og hjælp</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <article>  
+                
+                <h2>Gratis Opskrifter</h2>
+                <div id="patterns-container"></div>
+                <a href="../yarn needle pattern data.json" download>Download samlet JSON-fil</a>
+            </article>
+        </main>
+        <footer>
+            
+        </footer>
+    </div>
+
+   
+    <script>
+        
+        fetch('../yarn needle pattern data.json')
+          .then(response => response.json())
+          .then(data => {
+            
+            const patternsContainer = document.getElementById('patterns-container');
+            const patternsTable = document.createElement('table');
+            patternsTable.innerHTML = `
+              <tr>
+                <th>Opskrift</th>
+                <th>Sværhedsgrad</th>
+                <th>Garn</th>
+                <th>Strikkepinde</th>
+                <th>Download</th>
+              </tr>
+            `;
+            data.patterns.forEach(pattern => {
+              const yarnNames = pattern.yarn.map(yarnId => {
+                const yarn = data.yarns.find(y => y.id === yarnId);
+                return yarn ? yarn.name : 'Ukendt';
+              }).join(', ');
+
+              const needleNames = pattern.needles.map(needleId => {
+                const needle = data.needles.find(n => n.id === needleId);
+                return needle ? `${needle.size} (${needle.material})` : 'Ukendt';
+              }).join(', ');
+
+              patternsTable.innerHTML += `
+                <tr>
+                  <td>${pattern.name}</td>
+                  <td>${pattern.difficulty}</td>
+                  <td>${yarnNames}</td>
+                  <td>${needleNames}</td>
+                  <td><button type="button">Få opskriften</button></td>
+                </tr>
+              `;
+            });
+            patternsContainer.appendChild(patternsTable);
+          })
+          .catch(error => console.error('Fejl ved hentning af JSON-data:', error));
+    </script>
+</body>
+</html>

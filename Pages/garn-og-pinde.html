@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <title>Garn og pinde - KSA Strikkeopskrifter og Shop</title>
+    <link rel="stylesheet" href="../style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <h1><a href="../index.html" id="logo"><span>KSA STRIKKE</span><br><span>DESIGN</span></a></h1>
+
+    <div id="wrapper">
+        <header>
+            <nav>
+                <ul>
+                    <li><a href="garn-og-pinde.html">Garn og pinde</a></li>
+                    <li><a href="gratis-opskrifter.html">Gratis opskrifter</a></li>
+                    <li><a href="tips-og-hjaelp.html">Tips og hjælp</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <article>  
+                
+                <h2>Garn og Pinde</h2>
+                <p>Her kan du finde vores udvalg af garn og pinde samt gratis tips og tricks</p>
+
+               
+                <h3>Garn</h3>
+                <div id="yarn-container"></div>
+
+                
+                <h3>Strikkepinde</h3>
+                <div id="needles-container"></div>
+
+                
+                <a href="../yarn needle pattern data.json" download>Download samlet JSON-fil</a>
+            </article>
+        </main>
+        <footer>
+            <div class="column">
+                <h4>Sustainability</h4>
+                <p>
+                    In porttitor vel erat et condimentum. Etiam consequat ornare elit ac gravida.
+                </p>
+            </div>
+            
+            <div class="column">
+                <h4>Bliv KSA Forhandler</h4>
+                <p>
+                    Aliquam sit amet velit auctor, accumsan nisi a, consectetur felis.
+                </p>
+            </div>
+            
+            <div class="column">
+                <h4>Kontakt</h4>
+                <p>
+                    Sed a augue id massa bibendum bibendum.
+                </p>
+            </div>
+        </footer>
+    </div>
+
+    
+    <script>
+        
+        fetch('../yarn needle pattern data.json')
+          .then(response => response.json())
+          .then(data => {
+            
+            const yarnContainer = document.getElementById('yarn-container');
+            const yarnTable = document.createElement('table');
+            yarnTable.innerHTML = `
+              <tr>
+                <th>Navn</th>
+                <th>Materiale</th>
+                <th>Vægt</th>
+                <th>Farve</th>
+                <th>Producent</th>
+                <th>Bruges i</th>
+              </tr>
+            `;
+            data.yarns.forEach(yarn => {
+              
+              const usedInPatterns = data.patterns.filter(pattern => pattern.yarn.includes(yarn.id));
+              const patternLinks = usedInPatterns.map(pattern => `<a href="gratis-opskrifter.html#${pattern.id}">${pattern.name}</a>`).join(', ');
+
+              yarnTable.innerHTML += `
+                <tr>
+                  <td>${yarn.name}</td>
+                  <td>${yarn.material}</td>
+                  <td>${yarn.weight}</td>
+                  <td>${yarn.color}</td>
+                  <td>${yarn.manufacturer}</td>
+                  <td>${patternLinks}</td>
+                </tr>
+              `;
+            });
+            yarnContainer.appendChild(yarnTable);
+
+            
+            const needlesContainer = document.getElementById('needles-container');
+            const needlesTable = document.createElement('table');
+            needlesTable.innerHTML = `
+              <tr>
+                <th>Størrelse</th>
+                <th>Materiale</th>
+                <th>Længde</th>
+                <th>Mærke</th>
+                <th>Bruges til</th>
+              </tr>
+            `;
+            data.needles.forEach(needle => {
+              
+              const usedInPatterns = data.patterns.filter(pattern => pattern.needles.includes(needle.id));
+              const patternLinks = usedInPatterns.map(pattern => `<a href="gratis-opskrifter.html#${pattern.id}">${pattern.name}</a>`).join(', ');
+
+              needlesTable.innerHTML += `
+                <tr>
+                  <td>${needle.size}</td>
+                  <td>${needle.material}</td>
+                  <td>${needle.length}</td>
+                  <td>${needle.brand}</td>
+                  <td>${patternLinks}</td>
+                </tr>
+              `;
+            });
+            needlesContainer.appendChild(needlesTable);
+          })
+          .catch(error => console.error('Fejl ved hentning af JSON-data:', error));
+    </script>
+</body>
+</html>

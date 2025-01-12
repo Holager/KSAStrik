@@ -1,0 +1,118 @@
+{
+  "yarns": [
+    {
+      "id": 1,
+      "name": "Merino Wool",
+      "material": "Uld",
+      "weight": "10g",
+      "color": "Rød",
+      "manufacturer": "WoolCo"
+    },
+    {
+      "id": 2,
+      "name": "Cotton Blend",
+      "material": "Bomuld/Akryl",
+      "weight": "9g",
+      "color": "Blå",
+      "manufacturer": "KnitWell"
+    },
+    {
+      "id": 3,
+      "name": "Alpaca Soft",
+      "material": "Alpaka",
+      "weight": "8g",
+      "color": "Grå",
+      "manufacturer": "AlpaLux"
+    },
+    {
+      "id": 4,
+      "name": "Silk Shine",
+      "material": "Silke",
+      "weight": "7g",
+      "color": "Hvid",
+      "manufacturer": "SilkyThreads"
+    },
+    {
+      "id": 5,
+      "name": "Chunky Wool",
+      "material": "Uld",
+      "weight": "11g",
+      "color": "Grøn",
+      "manufacturer": "EcoKnit"
+    }
+  ],
+  "needles": [
+    {
+      "id": 1,
+      "size": "4.5mm",
+      "material": "Bambus",
+      "length": "35cm",
+      "brand": "NeedleCraft"
+    },
+    {
+      "id": 2,
+      "size": "3.0mm",
+      "material": "Metal",
+      "length": "20cm",
+      "brand": "KnitBest"
+    },
+    {
+      "id": 3,
+      "size": "6.0mm",
+      "material": "Træ",
+      "length": "40cm",
+      "brand": "WoodStitch"
+    },
+    {
+      "id": 4,
+      "size": "2.5mm",
+      "material": "Plastik",
+      "length": "25cm",
+      "brand": "FlexiKnit"
+    },
+    {
+      "id": 5,
+      "size": "5.0mm",
+      "material": "Rustfrit stål",
+      "length": "30cm",
+      "brand": "SteelPro"
+    }
+  ],
+  "patterns": [
+    {
+      "id": 1,
+      "name": "Chunky Sweater",
+      "difficulty": "Intermediate",
+      "yarn": [5],
+      "needles": [3]
+    },
+    {
+      "id": 2,
+      "name": "Summer Hat",
+      "difficulty": "Beginner",
+      "yarn": [2],
+      "needles": [2]
+    },
+    {
+      "id": 3,
+      "name": "Lace Shawl",
+      "difficulty": "Advanced",
+      "yarn": [4],
+      "needles": [1]
+    },
+    {
+      "id": 4,
+      "name": "Cozy Socks",
+      "difficulty": "Intermediate",
+      "yarn": [3],
+      "needles": [4]
+    },
+    {
+      "id": 5,
+      "name": "Baby Blanket",
+      "difficulty": "Beginner",
+      "yarn": [1],
+      "needles": [5]
+    }
+  ]
+}
